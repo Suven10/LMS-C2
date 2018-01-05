@@ -1,0 +1,37 @@
+<section>
+    <div class="row">
+        <div flex="70">
+                <h1>{{courseDetails.name}}</h1>
+        </div>
+        <div flex="30" class="enroll-btn" *ngIf="isStudent">
+            <button class="btn btn-primary" (click)="enrollCourse()" *ngIf="isEnrolled">Subscribe</button>
+            <label class="text-center btn label-block" *ngIf="!isEnrolled">Subscribed</label>
+        </div>
+    </div>
+    
+
+    <div class="soft-block-wrap">
+        <ul>
+            <li><b>Course type:</b> {{courseDetails.type}}</li>
+            <li><b>Description:</b> {{courseDetails.description}}</li>
+            <li><b>Enrolled date:</b> {{courseDetails.createdDate | date: 'dd-MM-yyyy'}}</li>
+            <li><b>All modules:</b> {{courseDetails.noOfModules}}</li>
+            <li><b>Finished modules:</b> {{courseDetails.moduleFinished}}</li>
+
+            <li *ngIf="courseDetails.type=='Multimedia' && !isEnrolled" style="list-style: none;margin-top: 20px">
+                <h5>Course chapters</h5>
+                <ul>
+                    <li *ngFor="let submod of courseDetails.subModules">
+                        <a routerLink="{{'/course/'+courseDetails.name.toLowerCase()+'/'+submod.guCourseId+'/'+submod.guChapterId}}">{{submod.name}}</a>
+                    </li>
+                </ul>
+            </li>
+            <li *ngIf="courseDetails.type=='Quiz' && !isEnrolled" style="list-style: none;margin-top: 20px">
+                <h5>Quiz</h5>
+                <ul>
+                    <a routerLink="{{'/quiz'+'/'+courseDetails.guCourseId}}">{{courseDetails.name}}</a>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</section>

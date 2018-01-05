@@ -1,0 +1,12 @@
+pdf-viewer{
+    margin: 20px;
+    border: solid 2px #bbb;
+}
+.width-small{
+    width: 150px;
+    display: inline-block;
+}
+
+.width-small input{
+    width: 50px;
+}

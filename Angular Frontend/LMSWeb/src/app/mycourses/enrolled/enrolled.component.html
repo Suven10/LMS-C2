@@ -1,0 +1,18 @@
+<h4 class="view-title">My Courses</h4>
+<div class="row">
+    <div class="col-lg-4 col-md-4 col-sm-4 col-12" *ngFor="let enrolled of enrolledCourses">
+        <div class="imaged-block" (click)="openCourse(enrolled.guCourseId)">
+            <div class="text-on-bg">
+                <div>{{enrolled.name}}</div>
+                <img src="{{enrolled.imagePath+'.jpg'}}" alt="{{enrolled.name}}">
+            </div>
+            <div class="block-disc">
+                <p>{{enrolled.description}}</p>
+                <small><i>Progress:</i></small>
+                <div class="enrolled-progress">
+                    <div class="progress-indecator" [ngStyle]="{'width': (enrolled.moduleFinished / enrolled.noOfModules)*100 +'%' }"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

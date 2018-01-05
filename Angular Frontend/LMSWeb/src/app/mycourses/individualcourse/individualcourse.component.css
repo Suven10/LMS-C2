@@ -1,0 +1,18 @@
+.enroll-btn
+{
+    padding-top: 10px;
+    padding-left: 10px;
+}
+.enroll-btn > .label-block
+{
+    color: #fff!important;
+    background-color: #4CAF50!important;
+    cursor: default;
+
+}
+
+/* .label-block
+{
+    padding-top: 15px;
+    padding-left: 10px;
+} */

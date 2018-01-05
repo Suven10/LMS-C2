@@ -1,0 +1,17 @@
+{
+	"profile": {
+		"insert": "/Ascentic/API/src/Ascentic.ProfileAPI/profile",
+		"getById": "/Ascentic/API/src/Ascentic.ProfileAPI/profile/",
+		"getAll": "/Ascentic/API/src/Ascentic.ProfileAPI/profiles/"
+	},
+	"courses": {
+		"insert": "/Ascentic/API/src/Ascentic.CourseAPI/course",
+		"getById": "/Ascentic/API/src/Ascentic.CourseAPI/course/",
+		"getAll": "/Ascentic/API/src/Ascentic.CourseAPI/courses/"
+	},
+	"categories": {
+		"insert": "/Ascentic/API/src/Ascentic.CourseAPI/category",
+		"getById": "/Ascentic/API/src/Ascentic.CourseAPI/category/",
+		"getAll": "/Ascentic/API/src/Ascentic.CourseAPI/categories/"
+	}
+}

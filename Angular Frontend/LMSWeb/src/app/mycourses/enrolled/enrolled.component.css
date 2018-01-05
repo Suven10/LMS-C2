@@ -1,0 +1,58 @@
+.imaged-block{
+    margin: 10px;
+    background: #eee;
+    min-height: 200px;
+}
+.imaged-block .text-on-bg{
+    height: 90px;
+    position: relative;
+    overflow: hidden;
+    border:solid 2px #eee;
+}
+.imaged-block .text-on-bg>div{
+    position: relative;
+    z-index: 1;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 5px;
+    background: rgba(256,256, 256, 0.8);
+}
+.imaged-block .text-on-bg>img{
+    width: 100%;
+    position: absolute;
+    top:0;
+    left:0;
+    z-index:0;
+}
+.imaged-block:hover{
+    cursor: pointer;
+    -webkit-box-shadow: 0 2px 5px #aaa;
+    -moz-box-shadow: 0 2px 5px #aaa;
+    box-shadow: 0 2px 5px #aaa;
+}
+.block-disc{
+    font-size: 14px;
+    padding: 10px;
+}
+.block-disc p{
+    min-height: 42px;
+}
+
+.enrolled-progress{
+    height: 12px;
+    width: 100%;
+    /*border: solid 1px #9FA8DA;*/
+    background: #ddd;
+    border-radius: 3px;
+    position: relative;
+}
+.enrolled-progress .progress-indecator{
+    height:10px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: #64B5F6;
+}
+.view-title{
+    margin-bottom: 20px;
+}

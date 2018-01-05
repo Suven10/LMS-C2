@@ -1,0 +1,21 @@
+.small-w{
+    width: 30%;
+}
+.soft-block-wrap{
+    padding: 20px;
+}
+.soft-block{
+    padding: 10px;
+    border-radius: 5px;
+    border: solid 1px #fafafa;
+    -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+}
+.dash-title{
+    font-weight: 500;
+    font-size: 14px;
+}
+.dash-val{
+    font-size: 40px;
+}

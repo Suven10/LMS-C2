@@ -1,0 +1,130 @@
+<section class="centered-form soft-block small-w" *ngIf="!isNewUser">
+    <h3 class="text-center">Sign In</h3>
+    <!-- <p *ngIf="!isLoginValid" [ngClass] = "'error'">
+            Incorrect username/password.
+    </p> -->
+    <form #signInForm="ngForm" (ngSubmit)="callSignIn(signInForm)">
+        <div class="form-group">
+            <input [(ngModel)]="authDetails.firstName" name="username" required type="text" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Username" required #username="ngModel">
+            <div *ngIf="username.invalid && signInForm.submitted && !isLoginValid" [ngClass] = "'error'"> 
+                Username is required. 
+            </div>
+        </div>
+        <div class="form-group">
+            <input [(ngModel)]="authDetails.password" name="password" required type="password" class="form-control" id="password" placeholder="Password" required #password="ngModel">
+            <div *ngIf="password.invalid && signInForm.submitted && !isLoginValid" [ngClass] = "'error'"> 
+                Password is required. 
+            </div>
+        </div>
+        <div class="text-right">
+            <button class="btn btn-primary" type="submit">Sign In</button>
+        </div>
+
+        <small id="emailHelp" class="form-text text-muted text-center">Don't have an account? <a routerLink="" (click)="switchSignUpIn()">Sign Up</a></small>
+    </form>
+
+</section>
+
+<section class="centered-form soft-block small-w" *ngIf="isNewUser">
+    <h3 class="text-center">Sign Up</h3>
+    <!-- <p *ngIf="isValidFormSubmitted" [ngClass] = "'success'">
+            Sign up submitted successfully.
+    </p> -->
+    <form #signUpForm="ngForm" (ngSubmit)="callSignUp(signUpForm)">
+        <div class="form-group">
+            <input name="fname" [(ngModel)]="authDetails.firstName" type="text" class="form-control" aria-describedby="emailHelp" placeholder="First name" required #fname="ngModel">
+            <div *ngIf="fname.invalid && signUpForm.submitted && !isValidFormSubmitted" [ngClass] = "'error'"> 
+                First name is required. 
+            </div>
+        </div>
+        <div class="form-group">
+            <input name="lname" [(ngModel)]="authDetails.lastName" type="text" class="form-control" id="lname" placeholder="Last name" required #lname="ngModel">
+            <div *ngIf="lname.invalid && signUpForm.submitted && !isValidFormSubmitted" [ngClass] = "'error'"> 
+                Last name is required. 
+            </div>
+        </div>
+        <div class="form-group">
+            <input name="email" [(ngModel)]="authDetails.email" type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Email" required #email="ngModel">
+            <div *ngIf="email.invalid && signUpForm.submitted && !isValidFormSubmitted" [ngClass] = "'error'"> 
+                Email is required. 
+            </div>
+        </div>
+        <div class="form-group">
+            <input name="ssn" [(ngModel)]="authDetails.ssn" type="text" class="form-control" id="ssn" aria-describedby="emailHelp" placeholder="SSN" required #ssn="ngModel">
+            <div *ngIf="ssn.invalid && signUpForm.submitted && !isValidFormSubmitted" [ngClass] = "'error'"> 
+                SSN is required. 
+            </div>
+        </div>
+        <div class="form-group">
+            <input name="phone" [(ngModel)]="authDetails.phone" type="text" class="form-control" id="phone" aria-describedby="emailHelp" placeholder="Phone" required #phone="ngModel">
+            <div *ngIf="phone.invalid && signUpForm.submitted && !isValidFormSubmitted" [ngClass] = "'error'"> 
+                Phone number is required. 
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Gender</label>
+            <div class="form-control">
+                <input [(ngModel)]="authDetails.gender" type="radio" name="gender"  value="male" required #gender="ngModel"> Male
+                <input [(ngModel)]="authDetails.gender" type="radio" name="gender" value="female" required #gender="ngModel"> Female
+            </div>
+        </div>
+        <div class="form-group">
+            <!-- <input [(ngModel)]="authDetails.dob" type="text" class="form-control" id="dob" aria-describedby="emailHelp" placeholder="Date Of Birth" #dob="ngModel"> -->
+            <my-date-picker name="dob" [options]="myDatePickerOptions" [selector]="selector" [(ngModel)]="authDetails.dob" required #dob="ngModel"></my-date-picker>
+        </div>
+        <div class="form-group">
+            <input name="streetAddr" [(ngModel)]="authDetails.streetAddress" type="text" class="form-control" id="streetAddr" placeholder="Street Address" required #streetAddr="ngModel">
+            <div *ngIf="streetAddr.invalid && signUpForm.submitted && !isValidFormSubmitted" [ngClass] = "'error'"> 
+                Street address is required. 
+            </div>
+        </div>
+        <div class="form-group">
+            <input name="city" [(ngModel)]="authDetails.city" type="text" class="form-control" id="city" placeholder="City" required #city="ngModel">
+            <div *ngIf="city.invalid && signUpForm.submitted && !isValidFormSubmitted" [ngClass] = "'error'"> 
+                City is required. 
+            </div>
+        </div>
+        <div class="form-group">
+            <input name="country" [(ngModel)]="authDetails.country" type="text" class="form-control" id="country" placeholder="Country" required #country="ngModel">
+            <div *ngIf="country.invalid && signUpForm.submitted && !isValidFormSubmitted" [ngClass] = "'error'"> 
+                Country is required. 
+            </div>
+        </div>
+        <div class="form-group">
+            <input name="postalCode" [(ngModel)]="authDetails.postalCode" type="text" class="form-control" id="postalCode" placeholder="Postal Code" required #postalCode="ngModel">
+            <div *ngIf="postalCode.invalid && signUpForm.submitted && !isValidFormSubmitted" [ngClass] = "'error'"> 
+                Postal Code is required. 
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">User types</label>
+            <div class="form-control">
+                <input type="checkbox" name="isInstructor" [(ngModel)]="authDetails.isInstructor"><span class="span-block">Instructor</span>
+                <input type="checkbox" name="isStudent" [(ngModel)]="authDetails.isStudent"><span class="span-block">Student</span>
+            </div>
+            <!-- <input [(ngModel)]="authDetails.gender" type="radio" name="gender" value="male"> Student
+            <input [(ngModel)]="authDetails.gender" type="radio" name="gender" value="female"> Female -->
+            <!-- <select class="form-control" id="exampleFormControlSelect2">
+                <option>Student</option>
+                <option>Instructor</option>
+            </select> -->
+        </div>
+        <div class="form-group">
+            <input name="password" type="password" [(ngModel)]="authDetails.password" class="form-control" id="password" aria-describedby="emailHelp" placeholder="Password" required #password="ngModel">
+            <div *ngIf="password.invalid && signUpForm.submitted && !isValidFormSubmitted" [ngClass] = "'error'"> 
+                Password is required. 
+            </div>
+        </div>
+        <div class="form-group">
+            <input name="confirmp" type="password" [(ngModel)]="authDetails.confirmPassword" class="form-control" id="confirmp" aria-describedby="emailHelp" placeholder="Confirm Password" required #confirmp="ngModel">
+            <div *ngIf="confirmp.invalid && signUpForm.submitted && !isValidFormSubmitted" [ngClass] = "'error'"> 
+                Confirm Password is required. 
+            </div>
+        </div>
+        <div class="text-right">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+        <small class="form-text text-muted text-center">Already registered in Suve LMS? <a routerLink="" (click)="switchSignUpIn()">Sign In</a></small>
+    </form>
+
+</section>

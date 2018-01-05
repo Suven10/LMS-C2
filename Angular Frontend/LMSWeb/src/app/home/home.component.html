@@ -1,0 +1,31 @@
+<section>
+    <div class="clearfix row" *ngIf="isStudent">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-12 small-w">
+            <div class="soft-block-wrap">
+                <div class="soft-block">
+                    <div class="dash-title">Courses followed</div>
+                    <div class="dash-val">{{coursesEnrolled}}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-6 col-12 small-w">
+            <div class="soft-block-wrap">
+                <div class="soft-block">
+                    <div class="dash-title">Courses finished</div>
+                    <div class="dash-val">{{finishedCoursesCount}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <div class="clearfix">
+        <div class="soft-block-wrap">
+            <h5>Recent courses</h5>
+            <div class="soft-block">
+                <app-mycourses [hideCat]="true"></app-mycourses>
+            </div>
+        </div>
+    </div>
+</section>

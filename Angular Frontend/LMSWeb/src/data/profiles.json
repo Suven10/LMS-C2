@@ -1,0 +1,33 @@
+[{
+		"gender": "Male",
+		"status": "1",
+		"dob": "1992-10-10",
+		"email": "suvethann10@gmail.com",
+		"profileNo": "9",
+		"createdDate": "2017-12-28 15:57:35.000",
+		"address": "Wellawatte,Colombo-06",
+		"firstName": "Suvethan",
+		"lastName": "Nantha",
+		"phone": "94777612091",
+		"guProfileId": "99F028A7-9CF5-049A-5D05-EE8053590EFF",
+		"ssn": "902840474v",
+		"isInstructor": "1",
+		"isStudent": "1"
+	},
+	{
+		"gender": "Male",
+		"status": "1",
+		"dob": "1982-10-30",
+		"email": "abc@gmail.com",
+		"profileNo": "8",
+		"createdDate": "2017-12-28 15:57:09.000",
+		"address": "Maharagama,Colombo",
+		"firstName": "Gihan",
+		"lastName": "Herath",
+		"phone": "94111553356",
+		"guProfileId": "DBE10CBA-7E61-852F-4B08-1C7970FBB183",
+		"ssn": "902840474v",
+		"isInstructor": "0",
+		"isStudent": "1"
+	}
+]

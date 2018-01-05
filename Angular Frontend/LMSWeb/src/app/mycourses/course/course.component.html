@@ -1,0 +1,130 @@
+<section class="centered-form soft-block small-w" *ngIf="isNewCourse">
+    <h3 class="text-center">Create Course</h3>
+    <!-- <p *ngIf="isValidFormSubmitted" [ngClass] = "'success'">
+            Sign up submitted successfully.
+    </p> -->
+    <form #courseAddForm="ngForm" (ngSubmit)="createCourse(courseAddForm)">
+        <div class="form-group">    
+            <div>
+                <select class="form-control" (change)="selectCat($event.target.value)">
+                    <option value="Category" >Categories</option>
+                    <option value="{{navcoursecat.guCatId}}" *ngFor="let navcoursecat of allCategories">{{navcoursecat.name}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <input name="code" [(ngModel)]="course.code" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Code" required #code="ngModel">
+            <div *ngIf="code.invalid && courseAddForm.submitted && !isValidFormSubmitted" [ngClass] = "'error'"> 
+                Code is required. 
+            </div>
+        </div>
+        <div class="form-group">
+            <input name="cname" [(ngModel)]="course.name" type="text" class="form-control" id="cname" placeholder="Name" required #cname="ngModel">
+            <div *ngIf="cname.invalid && courseAddForm.submitted && !isValidFormSubmitted" [ngClass] = "'error'"> 
+                Course name is required. 
+            </div>
+        </div>
+        <div class="form-group">
+            <input name="description" [(ngModel)]="course.desc" type="text" class="form-control" id="description" aria-describedby="" placeholder="Description" #description="ngModel">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Course Types</label>
+            <select name="type" [(ngModel)]="course.type" class="form-control" id="type">
+                <option>Quiz</option>
+                <option>Multimedia</option>
+            </select>
+        </div>
+        
+        <div class="form-group" *ngIf="course.type=='Multimedia'">
+            <fieldset>
+                <h5>Chapters</h5>
+                <div *ngFor="let chapter of course.subModules; let index=index;" class="new-course-quize">
+                    <div class="form-group">
+                        <input name="chapterCode.{{index}}" [(ngModel)]="chapter.code" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Chapter Code" required #chapterCode="ngModel">
+                        <!-- <div *ngIf="chapterCode.invalid &&  !isValidFormSubmitted" [ngClass] = "'error'"> 
+                            Chapter Code is required. 
+                        </div> -->
+                    </div>
+
+                    <div class="form-group">
+                        <input name="chapterName.{{index}}" [(ngModel)]="chapter.name" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Chapter Name" required #chapterName="ngModel">
+                        <!-- <div *ngIf="chapterName.invalid &&  !isValidFormSubmitted" [ngClass] = "'error'"> 
+                            Chapter Name is required. 
+                        </div> -->
+                    </div>
+
+                    <div class="form-group">
+                        <input name="chapterDesc.{{index}}" [(ngModel)]="chapter.desc" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Chapter Description"  #chapterDesc="ngModel">
+                        <!-- <div *ngIf="chapterDesc.invalid &&  !isValidFormSubmitted" [ngClass] = "'error'"> 
+                            Chapter Description is required. 
+                        </div> -->
+                        <!-- <input type="file" ng2FileSelect [uploader]="uploader" multiple  /> -->
+                    </div>
+                    <input name="chapterPath" type="file" (change)="addFiles($event,chapter)" placeholder="Upload file" accept=".pdf">
+                    <a flex="30" class="btn btn-secondary a-color" (click)="uploadFiles(chapter)">Upload</a>
+                </div>
+                <div class="text-right">
+                    <a flex="30" class="btn btn-secondary a-color" (click)="addMedia()">Add more</a>
+                </div>
+            </fieldset>
+        </div>
+        <div class="form-group" *ngIf="course.type=='Quiz'">
+            <fieldset>
+                <h5>Quizes</h5>
+                <div *ngFor="let quiz of course.quizzes; let index=index;" class="new-course-quize">
+                    <input name="quiz.{{index}}" [(ngModel)]="quiz.question" type="text" class="form-control" id="quizIndex" placeholder="Question" required>
+                    <div class="field-group-heading"><label for="selectAnswers">Options</label></div>
+                    <div class="control-input">
+                        <input name="ansIndex" [(ngModel)]="quiz.selectiveAnswer" type="text" class="form-control" id="ansIndex" placeholder="Answer" #ansIndex="ngModel">
+                        <a name="ansIndex" class="btn btn-secondary a-color" (click)="addAnswer(quiz)">Add</a>
+                    </div>
+                    <div class="input-check">
+                        <input type="checkbox" name="isAnswer" [(ngModel)]="quiz.isAnswer"><span class="span-block">Correct Answer</span>
+                    </div>
+                    
+                    <div class="field-group-heading"><label for="selectAnswers">Added options</label></div>
+                    <ul *ngFor="let answerObj of quiz.selectiveAnswers">
+                        <li>{{answerObj.name}}</li>
+                    </ul>
+                </div>
+                <div class="text-right">
+                    <a flex="30" class="btn btn-secondary a-color" (click)="addQuiz()">Add more</a>
+                </div>
+            </fieldset>
+        </div>
+        <div class="text-right">
+            <button type="submit" class="btn btn-primary">Create</button>
+        </div>
+    </form>
+
+</section>
+
+<section class="centered-form soft-block small-w" *ngIf="isNewCategory">
+        <h3 class="text-center">Add Category</h3>
+        <!-- <p *ngIf="isValidFormSubmitted" [ngClass] = "'success'">
+                Sign up submitted successfully.
+        </p> -->
+        <form #catAddForm="ngForm" (ngSubmit)="createCategory(catAddForm)">
+            <div class="form-group">
+                <input name="code" [(ngModel)]="category.code" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Code" required #code="ngModel">
+                <div *ngIf="code.invalid && catAddForm.submitted && !isValidFormSubmitted" [ngClass] = "'error'"> 
+                    Code is required. 
+                </div>
+            </div>
+            <div class="form-group">
+                <input name="catname" [(ngModel)]="category.name" type="text" class="form-control" id="catname" placeholder="Name" required #catname="ngModel">
+                <div *ngIf="catname.invalid && catAddForm.submitted && !isValidFormSubmitted" [ngClass] = "'error'"> 
+                    Category name is required. 
+                </div>
+            </div>
+            <div class="form-group">
+                <input name="description" [(ngModel)]="category.desc" type="text" class="form-control" id="description" aria-describedby="" placeholder="Description" #description="ngModel">
+            </div>
+            <div>
+            </div>
+            <div class="text-right">
+                <button type="submit" class="btn btn-primary">Create</button>
+            </div>
+        </form>
+    
+    </section>

@@ -1,0 +1,58 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand">Learning & Earning  </a>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" routerLink="/home">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Categories
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <!-- <div *ngFor="let navcoursecat of allCategories | groupBy:'code'">
+                        <h6 class="dropdown-header">{{navcoursecat.key}}</h6>
+                        <a class="dropdown-item" (click)="openCourse(navcourse.guCourseId)" *ngFor="let navcourse of navcoursecat.value">{{navcourse.name}}</a>
+                        <div class="dropdown-divider"></div>
+                    </div> -->
+                    <div *ngFor="let navcoursecat of allCategories">
+                        <a class="dropdown-item" (click)="openCourse(navcoursecat.guCatId)">{{navcoursecat.name}}</a>
+                        <div class="dropdown-divider"></div>
+                    </div>
+                </div>
+            </li>
+
+            <!--All courses-->
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/mycourses">Courses</a>
+            </li>
+            <li class="nav-item" *ngIf="!hideCourse">
+                <a class="nav-link" routerLink="/enrolled">My Courses</a>
+            </li>
+
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+
+            <ul class="navbar-nav mr-auto" *ngIf="!hideCourse">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        My Profile
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" routerLink="/myprofile">My profile</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" (click)="signOut()">Sign Out</a>
+                    </div>
+                </li>
+            </ul>
+            <ul class="navbar-nav mr-auto" *ngIf="hideCourse">
+                <li class="nav-item dropdown">
+                    <a class="nav-link" routerLink="/auth">Sign In</a>
+                </li>
+            </ul>
+        </form>
+    </div>
+</nav>

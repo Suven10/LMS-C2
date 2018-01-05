@@ -1,0 +1,25 @@
+[{
+	"guCatId": "C8697B6C-FAE9-B7CA-9DCD-286B730F3361",
+	"code": "Food&Beverage",
+	"name": "Food & Beverage",
+	"description": "",
+	"createdDate": "2017-12-28 17:31:43.000"
+}, {
+	"guCatId": "C53BA156-CAD1-815D-30A2-946308F341E2",
+	"code": "Travel",
+	"name": "Travel",
+	"description": "",
+	"createdDate": "2017-12-28 17:30:50.000"
+}, {
+	"guCatId": "10217916-5C86-52EB-E2F7-DDD5419B7865",
+	"code": "EnglishD",
+	"name": "English Developement",
+	"description": "English developement for kids",
+	"createdDate": "2017-12-28 17:30:34.000"
+}, {
+	"guCatId": "7C6E65BD-D1DA-FB00-C834-86C7E25B5211",
+	"code": "IT",
+	"name": "Information Technology",
+	"description": "Information Technology",
+	"createdDate": "2017-12-28 17:19:58.000"
+}]

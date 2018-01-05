@@ -1,0 +1,58 @@
+<div class="row">
+    <div class="clearfix createnew-block" *ngIf="!hideCat && showBtn">
+        <div class="field-group-heading">
+            <label>Categories</label>
+        </div>
+        <div class="form-group">
+            <select class="form-control width-half" (change)="getCourseDet($event.target.value)">
+                <option value="Select">Select</option>
+                <option value="{{cat.guCatId}}" *ngFor="let cat of categories">{{cat.name}}</option>
+            </select>
+        </div>
+       <div class="form-group" *ngIf="isStudent">
+            <button class="btn btn-primary" (click)="createCourse()">Create Course</button>
+            <button class="btn btn-primary" (click)="createCategory()">Create Category</button>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="clearfix createnew-block" *ngIf="hideCat && isByCategory && showBtn && isStudent"> 
+            <button class="btn btn-primary" (click)="createCourse()">Create Course</button>
+            <button class="btn btn-primary" (click)="createCategory()">Create Category</button>
+        </div>
+    </div>
+</div>
+<div class="row" *ngIf="isByCategory">
+    <div class="col-lg-4 col-md-4 col-sm-4 col-12" *ngFor="let course of allCourses.CourseDetails">
+        <div class="imaged-block" (click)="openCourse(course.guCourseId)">
+            <div class="text-on-bg">
+                <div>{{course.name}}</div>
+                <img src="{{course.imagePath+'.jpg'}}" alt="{{course.name}}">
+            </div>
+            <div class="block-disc">
+                <p>{{course.description}}</p>
+                <small><i>Progress:</i></small>
+                <div class="course-progress">
+                    <div class="progress-indecator" [ngStyle]="{'width': (course.moduleFinished / course.noOfModules)*100 +'%' }"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row" *ngIf="!isByCategory">
+    <div class="col-lg-4 col-md-4 col-sm-4 col-12" *ngFor="let course of allCourses">
+        <div class="imaged-block" (click)="openCourse(course.guCourseId)">
+            <div class="text-on-bg">
+                <div>{{course.name}}</div>
+                <img src="{{course.imagePath+'.jpg'}}" alt="{{course.name}}">
+            </div>
+            <div class="block-disc">
+                <p>{{course.description}}</p>
+                <small><i>Progress:</i></small>
+                <div class="course-progress">
+                    <div class="progress-indecator" [ngStyle]="{'width': (course.moduleFinished / course.noOfModules)*100 +'%' }"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

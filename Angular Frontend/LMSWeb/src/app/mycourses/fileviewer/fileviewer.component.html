@@ -1,0 +1,19 @@
+<section>
+    <div>
+        <div>
+            <h4>{{chapterDet.name}}</h4>
+        </div>
+        <div class="enroll-btn text-center">
+            <button class="btn btn-primary" (click)="reduceCount()">Previous</button>
+            <div class="width-small">
+                <input type="text" [(ngModel)]="pageCount" class="text-center label-block" /> of {{chapterDet.noOfModules}}
+            </div>
+            <button class="btn btn-primary" (click)="increaseCount()" >Next</button>            
+        </div>
+    </div>
+    
+
+    <div class="soft-block-wrap">
+        <pdf-viewer [src]="chapterDet.filePath" [(page)]="pageCount" [autoresize]="true" (after-load-complete)="afterLoadComplete($event)" [show-all]="false" [render-text]="false" [original-size]="false" style="display: block;"></pdf-viewer>
+    </div>
+</section>
